@@ -1,6 +1,13 @@
 #include "ej1.hpp"
 
-int funcion_variable_tiempo(string tiempo, int acote1, int acote2){
+Tiempo::Tiempo(){
+    HH=0;
+    MM=0;
+    SS=0;
+    am_o_pm="a.m.";
+}
+
+int Tiempo::funcion_variable_tiempo(string tiempo, int acote1, int acote2){
     int n;
     cout<<"Ingrese los datos del tiempo en "<<tiempo<<"\n";
     cin>>n;
@@ -10,7 +17,7 @@ int funcion_variable_tiempo(string tiempo, int acote1, int acote2){
     }
     return n;
 }
-string funcion_variable_tiempo(){
+string Tiempo::funcion_variable_tiempo(){
     int am_o_pm;
     cout<<"Escriba 1 si quiere elegir a.m, escriba 2 si quiere elegir p.m\n";
     cin>>am_o_pm;
@@ -26,7 +33,7 @@ string funcion_variable_tiempo(){
     }
     return "a.m.";
 }
-int funcion_variable_tiempo(int horas, string am_o_pm){
+int Tiempo::funcion_variable_tiempo(int horas, string am_o_pm){
     if(am_o_pm=="a.m."){
         if(horas==12){
             return 0;
@@ -38,11 +45,7 @@ int funcion_variable_tiempo(int horas, string am_o_pm){
     }
     return horas+12;
 }
-int funcion_tiempo(){
-    int HH=0;
-    int MM=0;
-    int SS=0;
-    string am_o_pm="a.m.";
+int Tiempo::funcion_tiempo(){
     int n;
     cout<<"Bienvenido, eliga por favor la forma en la que desea expresar el tiempo:\n";
     cout<<"1) Sin parametros\n2) Solo hora\n3) Solo hora y minuto\n4) Solo hora, minuto y segundo\n5) Expresion completa\n";
@@ -110,6 +113,7 @@ int funcion_tiempo(){
     return 0;
 }
 int main(){
-    funcion_tiempo();
+    Tiempo t;
+    t.funcion_tiempo();
     return 0;
 }
