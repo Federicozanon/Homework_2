@@ -7,7 +7,7 @@ using namespace std;
 
 //La relacion entre estas clases puede ser de agregación
 
-using Notacurso=struct{
+struct Notacurso{ //ERROR AL USAR USING
     string curso;
     int nota;
 };
@@ -24,22 +24,24 @@ class Estudiante{
         int retornar_legajo(){
             return legajo;
         }
-        vector<Notacurso> retornar_cursos_y_notas() const{
-            return lista_cursos_y_notas;
-        }
+        void imprimir_cursos_alumno() const;
         double retornar_promedio() const;
+        void agregar_curso_con_nota(const string &curso, int nota){
+            lista_cursos_y_notas.push_back(Notacurso{curso, nota});
+        }
 };
 class Curso {
     private:
+        string nombre_curso;
         vector<Estudiante*> Estudiantess;
         int max_curso=20;
     public:
-        Curso() = default;
+        Curso(string nombre) : nombre_curso(nombre) {};
         Curso(const Curso &original);
         Curso &asignacion_punteros(const Curso &original);
 
-        int inscribir_o_desenscribir(string inscri_o_desinscri, Estudiante* estudiante);
-        int esta_inscripto(int legajo);
+        int inscribir_o_desenscribir(string inscri_o_desinscri, Estudiante* estudiante, int nota_final);
+        string esta_inscripto(int legajo);
         void esta_completo();
         void imprimir_alumnos();
 };
