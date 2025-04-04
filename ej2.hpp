@@ -6,7 +6,7 @@ using namespace std;
 
 //La relacion entre estas clases puede ser de agregación
 
-struct Notacurso{ //ERROR AL USAR USING
+struct Notacurso{ //como puedo usar using?
     string curso;
     int nota;
 };
