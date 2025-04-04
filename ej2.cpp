@@ -126,6 +126,13 @@ int main(){
     Fisica.inscribir_o_desenscribir("inscribir",&est9, 5);
     Fisica.imprimir_alumnos();
 
+    for(int i=0;i<int(Fisica.retornar_max_curso());i++){
+        int n=i+1;
+        string alumno= "est"+n;
+        Estudiante alumno(alumno, n);
+        Fisica.inscribir_o_desenscribir("inscribir",&alumno, n%11);
+    }
+
 
     cout<<"inscribimos los estudiantes en Paradigmas\n";
     Paradigmas.inscribir_o_desenscribir("inscribir", &est3, 8);

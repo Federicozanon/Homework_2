@@ -2,7 +2,6 @@ using namespace std;
 #include <iostream>
 #include <vector>
 #include <string>
-#include <map>
 #include <algorithm>
 
 //La relacion entre estas clases puede ser de agregación
@@ -36,6 +35,9 @@ class Curso {
         vector<Estudiante*> Estudiantess;
         int max_curso=20;
     public:
+        int retornar_max_curso(){
+            return max_curso;
+        }
         Curso(string nombre) : nombre_curso(nombre) {};
         Curso(const Curso &original);
         Curso &asignacion_punteros(const Curso &original);
