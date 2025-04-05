@@ -2,7 +2,6 @@ using namespace std;
 #include <iomanip>
 #include <iostream>
 #include <string>
-#pragma once
 
 class Tiempo{
     private:

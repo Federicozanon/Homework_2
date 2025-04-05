@@ -115,6 +115,9 @@ class Complejo : public Numero{
             return make_unique<Complejo>(p_real, p_img);
         }
         string a_string() override {
+            if(parte_imaginaria<0){
+                return to_string(parte_real)+" "+to_string(parte_imaginaria)+"i";
+            }
             return to_string(parte_real)+" + "+to_string(parte_imaginaria)+"i";
         }
         ~Complejo() {};
