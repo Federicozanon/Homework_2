@@ -51,7 +51,7 @@ class CajaDeAhorro : public Cuenta_Banco{
                 cout<<"Se han superado las 2 muestras gratis de la informacion de la cuenta, se procedera a descontar $20\n";
                 balance-=20;
             }
-            cout<<"Titular cuenta: "<<titular_cuenta<<".\nBalance: "<<balance<<".\n";
+            cout<<"Titular cuenta: "<<titular_cuenta<<".\nBalance: $"<<balance<<".\n";
             cant_veces_accedido++;
         }
 };
@@ -83,6 +83,6 @@ class CuentaCorriente : public Cuenta_Banco{
             return 0;
         }
         void mostrarInfo() override{
-            cout<<"Titular cuenta: "<<titular_cuenta<<".\nBalance: "<<balance<<".\n";
+            cout<<"Titular cuenta: "<<titular_cuenta<<".\nBalance: $"<<balance<<".\n";
         }
 };

@@ -23,7 +23,6 @@ int Curso::inscribir_o_desenscribir(string inscri_o_desinscri, shared_ptr<Estudi
             cout<<"El curso esta lleno, no se puede inscribir ningun alumno mas\n";
             return 1;
         }
-        srand(time(0));
         Estudiantess.push_back(estudiante);
         estudiante->agregar_curso_con_nota(nombre_curso, nota_final);
         return 0;
@@ -39,7 +38,7 @@ int Curso::inscribir_o_desenscribir(string inscri_o_desinscri, shared_ptr<Estudi
                 return 0;
             }
         }
-        cout<<"No se ha encontrado el alumno "<<estudiante<<"\n";
+        cout<<"No se ha encontrado el alumno "<<estudiante->retornar_nombre()<<"\n";
     }
     return 1;
 }
@@ -84,6 +83,11 @@ int main(){
     Fisica.esta_completo();
     cout<<"Creamos 20 estudiantes con puntero a nuevos_estudiantes, y los inscribimos en Fisica\n";
     for(int i=1; i<=int(Fisica.retornar_max_curso()); i++){
+        /*NOTA: al crear a nuestros estudiantes con un est+i, siendo i un numero del 1 al 20,
+        el ordenamiento no lo hace completamente bien ya que hay numeros de por medio, pero si se prueba con nombres de solo letras
+        el ordenamiento lexicografico lo hace perfecto. En este caso pense usar este ciclo for para crear los estudiantes de esta forma
+        para evitar tener que crearlos uno por uno. 
+        */
         string alumno= "est"+to_string(i);
         auto e = make_shared<Estudiante>(alumno, i);
         nuevos_estudiantes.push_back(e);
@@ -110,7 +114,7 @@ int main(){
     Fisica.inscribir_o_desenscribir("desinscribir", estudiante_de_mas, 0);
 
     cout<<"Inscribimos estudiantes en Paradigmas\n";
-    Paradigmas.inscribir_o_desenscribir("inscribir", nuevos_estudiantes[1],6);    
+    Paradigmas.inscribir_o_desenscribir("inscribir", nuevos_estudiantes[1],7);    
     Paradigmas.inscribir_o_desenscribir("inscribir", nuevos_estudiantes[2],6);
     Paradigmas.inscribir_o_desenscribir("inscribir", nuevos_estudiantes[3],7);
 
@@ -119,7 +123,7 @@ int main(){
     cout << "Legajo de " << nuevos_estudiantes[1]->retornar_nombre() << ": " << nuevos_estudiantes[1]->retornar_legajo() << "\n";
     cout << "Promedio de " << nuevos_estudiantes[1]->retornar_nombre() << ": " << nuevos_estudiantes[1]->retornar_promedio() << "\n";
 
-    cout<<"Probamos la funcion para copiar cursos\n";
+    cout<<"Probamos la funcion para copiar cursos (shallow copy)\n";
     Curso CopiaParadigmas(Paradigmas);
     CopiaParadigmas.imprimir_alumnos();
     
